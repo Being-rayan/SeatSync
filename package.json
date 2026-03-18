@@ -1,0 +1,18 @@
+{
+  "name": "seatsync",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "scripts": {
+    "dev": "node scripts/dev.js",
+    "client:dev": "npm run dev --workspace client",
+    "server:dev": "npm run dev --workspace server",
+    "client:build": "npm run build --workspace client",
+    "server:test": "npm test --workspace server",
+    "db:schema": "npm run db:schema --workspace server",
+    "db:seed": "npm run db:seed --workspace server"
+  }
+}
