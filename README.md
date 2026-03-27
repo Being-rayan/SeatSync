@@ -247,6 +247,86 @@ Use any registered passenger account, then verify with one of these seeded recor
 | Bus | `BUS-990501` | Neha Arora | `2026-04-25` | `A1` | `4B` | Chennai Central | Tambaram |
 | Bus | `BUS-990502` | Vikram Sethi | `2026-04-25` | `A1` | `5C` | Chennai Central | Tambaram |
 
+## Browser Check Examples
+
+After starting the backend and frontend, open:
+
+```text
+http://127.0.0.1:5173/
+```
+
+or:
+
+```text
+http://localhost:5173/
+```
+
+### 1. Landing Page Check
+
+- The SeatSync landing page should load.
+- You should see the main home screen with `Log In` and `Get Started`.
+
+### 2. Passenger Smoke Test
+
+Use this existing passenger account:
+
+- Email: `meera@seatsync.dev`
+- Password: `Travel@123`
+
+Expected result after login:
+
+- You should land on `/app/dashboard`.
+- You should see a verified journey for `12901 Rajdhani Express`.
+- The coach should be `S1`.
+- The current seat should be `1D`.
+
+Then open the live seat map:
+
+- Click `Enter Live Seat Map`.
+- You should land on `/app/swaps`.
+- Your seat should be highlighted.
+- The swap request panel should appear on the right side.
+
+### 3. Registration And Journey Verification Example
+
+Create a new passenger account from `/register`, then verify with this exact sample:
+
+```text
+Journey type: train
+Reference: PNR-900112
+Passenger name: Kavya Iyer
+Date of journey: 2026-04-22
+Coach / bus number: S1
+Assigned seat number: 6A
+Boarding point: New Delhi
+Destination point: Bhopal
+```
+
+Expected result after clicking `Verify Journey`:
+
+- You should land on `/app/dashboard`.
+- The verified journey should show coach `S1`.
+- The assigned seat should be `6A`.
+- The live seat map should open normally from the dashboard.
+
+### 4. End-To-End Passenger Swap Example
+
+Use two browser sessions:
+
+1. In the first browser window, log in as `meera@seatsync.dev / Travel@123`.
+2. In a second browser window or Incognito window, create a new account and verify `PNR-900112`.
+3. In the second window, open the live seat map and click Meera's seat `1D`.
+4. Send a swap request.
+5. In Meera's window, wait for the request to appear and click `Accept`.
+6. In the requester window, click `Final Confirm`.
+7. In Meera's window, click `Final Confirm`.
+
+Expected result:
+
+- The request should move through `pending` to `accepted` and then `completed`.
+- Both passengers should see updated seat assignments after polling refreshes the page.
+- Notifications should appear in the alerts screen for the involved passengers.
+
 ## Seeded Data Highlights
 
 - 2 train journeys and 2 bus journeys
