@@ -1,0 +1,14 @@
+node_modules
+dist
+.env
+.DS_Store
+coverage
+client/.env
+server/.env
+_reference
+*.log
+.run-logs/
+node_modules/
+.env
+dist/
+.run-logs/
